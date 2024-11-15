@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+<body class="bg-dark">
+    
+
+<div class="bg-info w-50 p-3 m-2 rounded " style="transform: translate(50%, 50%)">
+    <h2 class="text-center">
+        are you sure to delete this student 
+        
+
+    </h2>
+    <div class="ms-5  w-50">
+        <h3> ==> :
+            {{ stu }}
+        </h3>
+        <h3> ==> :
+            {{ stu.persent }}
+        </h3>
+    </div>
+    <form action="" method="POST" class="text-center">
+        {% csrf_token %} 
+        <!-- <input type="hidden" name="yess" > --> 
+        <button type="submit" name="yess" class="bg-warning col-4 m-3 text-dark" >Yes</button>
+        <button type="submit" name="noo" class="bg-success col-4 m-3 text-dark" >NO</button>
+        
+    </form>
+</div>
+</body>

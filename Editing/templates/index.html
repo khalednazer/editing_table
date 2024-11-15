@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body class="bg-dark" style="box-sizing: border-box;">
+    <button  type="button" class="btn btn-success w-50 mb-3 addd asd" style="transform: translate(50%, 50%);">add</button>
+    <button  type="button" class="btn btn-warning w-50 mb-3 edds" style="transform: translate(50%, 50%);">edite</button>
+
+    <table class="table w-50 bg-info" style="transform: translate(50%, 10%);">
+
+        <div class="form mt-3 w-50 ms-5 addTask" style="transform: translate(50%,50%); display:none">
+            <form action="" method="POST" >
+                {% csrf_token %}
+                <input type="text" name="naam" placeholder="task name..">
+                <input  type="number" name="persent" placeholder="degree">
+                <input class="saveTask"  type="submit" name="addd" value="save">
+
+            </form>
+        </div>
+
+        
+        <thead>
+            <tr>
+            <th scope="col" class="text-warning">name</th>
+            <th scope="col" class="text-warning">rates</th>
+            <th scope="col" class="text-warning">Editing</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in st %}
+            <form action="" method="POST">
+                {% csrf_token %} 
+                <tr>
+                <td>{{ x.naam }}</td>
+                <td class="per">
+                    {{ x.persent }}
+                    <input type="text" name="persent"  class="editee pers" style="width: 20px; display:none" >
+                    <input type="hidden" name="naam"  value={{ x.naam }}>
+
+                    
+                </td>
+                <td>
+                    <div class="sh">
+                        <input type="hidden" name="iid" value={{ x.id }}>
+                            <button  class=" btn-danger  edites" name="editt" value={{ x.id }} type="submit">edite </button>
+
+                            <button type="submit" class="btn btn-danger edd" name="delete">delete  </button>
+                            
+                    </div>
+                </td>
+            </tr>
+        </form>
+        {% endfor %}
+
+        </tbody>
+        </table>
+        
+    <script>
+        ad = document.querySelector('.asd')
+        addTask = document.querySelector('.addTask')
+        taskave = document.querySelector('.saveTask')
+        eddi = document.querySelector('.edds')
+        perss = document.querySelectorAll('.pers')
+        ad.onclick=function(){
+            console.log('hello world')
+            addTask.style.display= "block"
+        }
+        taskave.onclick=function(){
+            addTask.style.display= "none"
+        }
+        eddi.onclick=function(){
+            console.log('edite taks')
+            perss.forEach(function(x){
+                x.style.display='block'
+            })
+        }
+
+    </script>
+</body>
+</html>
